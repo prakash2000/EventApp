@@ -1,0 +1,24 @@
+<form name="NewEventForm" ng-submit="save(event)" ng-controller="eventSaveCtrl" class="add_form" role="form" novalidate>	
+ <ul>
+   <li>
+      <label>Contact Name</label>
+      <input type="text" name="full_name" ng-model="event.contactname" placeholder="Full Name" required />
+      <span class="error_span" ng-show="NewEventForm.$dirty && NewEventForm.full_name.$error.required">* Enter FullName</span>
+   </li>
+   <li>
+      <label>Event</label>
+      <input type="text" name="event_name" ng-model="event.name" placeholder="Event Name" required />
+      <span class="error_span" ng-show="NewEventForm.$dirty && NewEventForm.event_name.$error.required">* Enter Event Name</span>
+   </li>
+   <li>
+      <label>Date</label>
+      <input type="text" name="event_date" ng-model="event.date" placeholder="Event Date" required />
+      <span class="error_span" ng-show="NewEventForm.$dirty && NewEventForm.event_date.$error.required">* Enter Event Date</span>
+   </li>    
+   <li>
+         <label></label>
+         <span class="error_span" ng-bind="submitMsg"></span>
+   </li>   
+ </ul> 
+ <input type="submit" value="Save" /> 
+</form> 
