@@ -1,26 +1,31 @@
-var saveController=["$scope", "eventService", function ($scope, eventService) {
-    $scope.save = function (event) {
-        if ($scope.NewEventForm.$valid) {
-            debugger;
-            eventService
-                        .save(event)
-                        .then(function (res) {
-                            console.log(res);
-                            if (res.hasError) {
-                                $scope.hasError = res.hasError;
-                                $scope.error = res.status;
-                                $scope.submitMsg = "Match not Added.Something went Wrong!!";
-                            } else {
-                                // $modalInstance.close({ id: res.id, name: gender.name                                
-                                console.log(res)
-                                $scope.event = {};
-                                $scope.submitMsg = "New Match Added Successfully";
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
+var saveController=["$scope", "eventService","$timeout", function ($scope, eventService,$timeout) {
+    var messageTimer = false;    
+    $scope.save = function (event) {        
+        if ($scope.NewEventForm.$valid) {   
+            
+            var SubmitMsg; 
+            $scope.showMessage = false;                    
+            var response=eventService.save(event);                                                 
+                if (response==true) {
+                    $scope.event = {};                                      
+                    SubmitMsg="New Event Added Successfully";
+                    $scope.NewEventForm.$setPristine();                                               
+                } else {                                                                                           
+                    $scope.hasError = true;                               
+                    SubmitMsg = "Event not Added.Something went Wrong!!";
+                }    
+                if (messageTimer) {
+                    $timeout.cancel(messageTimer);
+                }
+                $scope.showMessage = true;
+                $scope.submitMsg =  SubmitMsg; 
+                messageTimer = $timeout(function() {
+                    $scope.submitMsg="";
+                    $scope.showMessage = false; 
+                    console.log(messageTimer);   
+                }, 3000);            
         }
+        
         else
             $scope.NewEventForm.$setDirty();
     };
