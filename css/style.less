@@ -100,20 +100,25 @@ body {
             border-right: 2px solid #ff0000;
             box-sizing: border-box;
             color: #ffffff;
-            flex-grow: 1;              
-            padding: 10px;
+            flex-grow: 1;                          
             text-align: center;
             list-style: none;
-            border-right: 1px solid red;           
-            &:hover{
-                cursor: pointer;
-                background-color: #222;
-            }
+            border-right: 1px solid red;                       
             a{
                 text-decoration: none;
                 color: #fff;
-            }     
-        }                    
+                padding: 10px;
+                display: block;
+                   &:hover{
+                      cursor: pointer;
+                      background-color: tomato;                              
+                  }
+            }                 
+        }  
+        .active{
+                cursor: pointer;
+                background-color: tomato;
+            }                  
 }
 .app_content{
     margin:0;
@@ -158,4 +163,63 @@ body {
     padding: 5px 10px;
     background-color: lightgreen;
     color:orange;
+}
+.event_list{
+    .flex;
+    flex-flow: row wrap;
+	-webkit-flex-flow: row wrap;
+    justify-content: space-around;			
+	margin: 0;
+	padding: 0;	
+    list-style:none;    
+        li{
+            background-color: @sitebg3;
+            border-bottom: 2px solid darken(@sitebg3,20%);
+            box-sizing: border-box;
+            color: #ffffff;
+            flex-grow: 1;              
+            padding: 10px;
+            text-align: center;
+            list-style: none;
+            margin-right: 5px;
+            margin-top: 5px;                  
+            &:hover{
+                cursor: pointer;
+                border-bottom: 2px solid darken(@sitebg3,80%);
+            }
+            figure{
+              padding: 10px;
+              .nomargin;
+               img{
+                   width: 70px;
+                   height: 70px;
+                   padding: 10px;
+                   border-radius: 50%;
+                   background-color: gray;
+                   text-align: center;                   
+               }
+            }
+            
+            .event_info{
+                padding: 5px;
+                border-width: 1px solid #ccc;
+                background-color: @sitebg4;
+            }
+            a{
+                text-decoration: none;
+                color: #fff;
+            }     
+        } 
+}
+
+.calendar_btn{
+    background-color: #ccc;
+    padding: 5px;
+    border:1px solid #ccc;
+}
+
+@media (max-width:767px){
+.wrapper{
+    width:100%;
+}
 }

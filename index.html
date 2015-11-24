@@ -4,15 +4,16 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title ng-bind="title"></title> 
-	<link href="css/style.less" type="text/less"rel="stylesheet" />   
+	<link href="css/style.less" type="text/less"rel="stylesheet" />
+	<link href="css/bootstrap.min.css" type="text/css"rel="stylesheet" />   
 	<script type="text/javascript" src="scripts/less.min.js"></script>  
 </head>
 <body>
 <div class="wrapper">
 	 <ul class="nav_bar">
-		 <li ui-route="/home"><a ui-sref="home">Home</a></li>
-		 <li ui-route="/new_event"><a ui-sref="new_event">Add Event</a></li>
-         <li ui-route="/list_event"><a ui-sref="list_event">All Events</a></li>
+		 <li ui-route="/" ng-class="{ 'active' : $uiRoute }"><a ui-sref="home">Home</a></li>
+		 <li ui-route="/new_event" ng-class="{ 'active' : $uiRoute }"><a ui-sref="new_event">Add Event</a></li>
+         <li ui-route="/list_event" ng-class="{ 'active' : $uiRoute }"><a ui-sref="list_event">All Events</a></li>
 	 </ul>	 
 	 <div class="app_content">
 		<h3 ng-bind="title"></h3>
@@ -21,7 +22,9 @@
  </div>
    
 <script type="text/javascript" src="scripts/angular.min.js"></script>
+<script type="text/javascript" src="scripts/ui-bootstrap-tpls-0.13.3.min.js"></script>
 <script type="text/javascript" src="scripts/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="scripts/ui-utils.min.js"></script>
 
 <script type="text/javascript" src="App/app.js"></script>
 <script type="text/javascript" src="App/services/EventService.js"></script>

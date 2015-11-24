@@ -1,4 +1,4 @@
-var app=angular.module('EventApp',['ui.router']);
+var app=angular.module('EventApp',['ui.bootstrap','ui.router','ui.utils']);
 
 app.config(["$stateProvider","$urlRouterProvider",
 	function($stateProvider,$urlRouterProvider){
@@ -30,10 +30,9 @@ app.config(["$stateProvider","$urlRouterProvider",
 	}]);
 	
 app.run(['$state','$rootScope',function ($state,$rootScope) {
-    // $state.transitionTo('home');
+    // $state.transitionTo('home');	
 	$rootScope.$on('$stateChangeSuccess', function (event, current) {
             event.preventDefault();
-
             if (current.hasOwnProperty("title")) {
                 $rootScope.title = current.title;
             }

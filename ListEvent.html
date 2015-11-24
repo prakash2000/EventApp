@@ -1,5 +1,13 @@
-  <ul>
-	  <li>1</li>
-	  <li>1</li>
-	  <li>1</li>
-  </ul>
+<ul class="event_list">
+	<li ng-show="!events.length">No events</li>	
+	<li ng-repeat="event in events">
+		<figure>
+			<img src="images/birthday.png" alt="Birthday Wish" />
+		</figure>
+		<div class="event_info">
+			<h2 ng-bind="event.contactname"></h2>
+			<h4 ng-bind="event.name"></h4>
+			<span ng-bind="event.date"></span>
+		</div>
+	</li>
+</ul>
