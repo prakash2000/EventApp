@@ -5,7 +5,8 @@ app.config(["$stateProvider","$urlRouterProvider",
 		$stateProvider
 		.state("home",{
 			url:'/',
-			templateUrl:'Home.html',            
+			templateUrl:'Home.html',
+			controller:"eventNotifyCtrl",	              
 			title:'Event Home'
 		})
 		.state("new_event",{

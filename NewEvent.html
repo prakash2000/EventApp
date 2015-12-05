@@ -14,7 +14,7 @@
       <label>Date</label>
       <input type="text" name="event_date"  datepicker-popup="dd/MMMM/yyyy" ng-model="event.date" placeholder="Event Date" is-open="status.opened" min-date="'2015-06-01'" max-date="'2018-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled required />
         <button type="button" class="calendar_btn" ng-click="open($event)" ><i class="glyphicon glyphicon-calendar" ></i></button>
-      <span class="error_span" ng-show="NewEventForm.$submitted && NewEventForm.$dirty && NewEventForm.event_date.$error.required">* Enter Event Date</span>
+        <span class="error_span" ng-show="NewEventForm.$submitted && NewEventForm.$dirty && NewEventForm.event_date.$error.required">* Enter Event Date</span>
    </li>         
    <li>
          <label></label>

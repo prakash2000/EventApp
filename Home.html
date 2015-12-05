@@ -1,1 +1,14 @@
-<span>No Upcomming Events are there</span>
+<table class="home_notify">
+	<tr ng-show="!events.length"><td colspan="3"> No Upcomming Events are there</td></tr>
+		
+    <tr ng-show="events.length">
+		<th>Contact Name</th>
+		<th> Event</th>
+		<th> Date</th>
+	<tr>
+	<tr ng-repeat="event in events" >						
+		<td ng-bind="event.contactname"></td>
+		<td ng-bind="event.name"></td>
+		<td ng-bind="event.date"></td>		
+	</tr>
+</table>
