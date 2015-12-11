@@ -2,6 +2,15 @@ var saveController=["$scope", "eventService","$timeout", function ($scope, event
     var messageTimer = false;    
     $scope.save = function (event) {        
         if ($scope.NewEventForm.$valid) {   
+            var localDate= $scope.event.date;
+            var monthName=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+            var localDay=localDate.getDate();
+            var localMonth=localDate.getMonth();            
+            var localYear=localDate.getFullYear();
+            var fullDate= localDay +" "+ monthName[localMonth] +" "+ localYear;
+            //var parsedDate = new Date(parseInt(localDate.substr(6), 10));
+           
+            $scope.event.date=fullDate;
             
             var SubmitMsg; 
             $scope.showMessage = false;                    
@@ -23,7 +32,7 @@ var saveController=["$scope", "eventService","$timeout", function ($scope, event
                     $scope.submitMsg="";
                     $scope.showMessage = false; 
                     console.log(messageTimer);   
-                }, 3000);            
+                }, 3000);                            
         }        
         else
             $scope.NewEventForm.$setDirty();
@@ -32,13 +41,12 @@ var saveController=["$scope", "eventService","$timeout", function ($scope, event
 
 var listController=["$scope", "eventService", function ($scope, eventService) {             
             $scope.rowCollection = [];
-            $scope.events = [];           
-                              
-            var Allevents=eventService.get();                                                 
-                if (Allevents!=null) {
+            $scope.events = [];
+            var Allevents=eventService.get();                
+                if (Allevents!=null) {                   
                     $scope.rowCollection = Allevents;
                     $scope.events = [].concat($scope.rowCollection);                                       
-                }                                                
+                }                 
 }]; 
 
 app.controller('DatepickerCtrl', function ($scope) {
@@ -53,6 +61,7 @@ app.controller('DatepickerCtrl', function ($scope) {
 
     // Disable weekend selection
     $scope.disabled = function (date, mode) {
+        // return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
         return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
     };
 
@@ -107,10 +116,16 @@ app.controller('DatepickerCtrl', function ($scope) {
                 }
             }
         }
-
         return '';
     };
 });
+
+function DeleteAll(){
+    localStorage.clear();
+}
+function DeleteEvent(){
+    localStorage.removeItem();
+}
 
 angular
         .module("EventApp")

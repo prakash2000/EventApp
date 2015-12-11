@@ -60,11 +60,17 @@ li{
     -ms-transform:scale(@scale);
     transform:scale(@scale);
 }
+.transition{
+    -webkit-transition: all 1s ease-in-out 1s;
+    -moz-transition: all 1s ease-in-out 1s;
+    -o-transition:all 1s ease-in-out 1s;
+    transition: all 1s ease-in-out 1s;
+}
 .transition(@trans_val:0.25){
-    -webkit-transition: all @trans_val ease-out;
-    -moz-transition: all @trans_val ease-out;
-    -o-transition:all @trans_val ease-out;
-    transition: all @trans_val ease-out;
+    -webkit-transition: all @trans_val ease-in-out;
+    -moz-transition: all @trans_val ease-in-out;
+    -o-transition:all @trans_val ease-in-out;
+    transition: all @trans_val ease-in-out;
 }
 .transition_top(@trans_val1:0.25){
     -webkit-transition: top @trans_val1 ease-out; 
@@ -182,11 +188,29 @@ body {
             text-align: center;
             list-style: none;
             margin-right: 5px;
-            margin-top: 5px;                              
+            margin-top: 5px;    
+            position: relative;                                            
             &:hover{
                 cursor: pointer;
-                border-bottom: 2px solid darken(@sitebg3,80%);
+                border-bottom: 2px solid darken(@sitebg3,80%);                                      
+                .delete_img{                    
+                    display: block;                                           
+                }
             }
+            .delete_img{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                padding: 6px;
+                border-radius: 4px;
+                border:1px solid #ccc;
+                background-color:orangered ;
+                color:#fff;
+                display: none;                
+                &:hover{
+                   background-color:red; 
+                }
+            }            
             figure{
               padding: 10px;
               .nomargin;
@@ -201,8 +225,7 @@ body {
             }
             
             .event_info{
-                padding: 5px;
-                border-width: 1px solid #ccc;
+                padding: 5px;               
                 background-color: @sitebg4;
             }
             a{
@@ -238,6 +261,15 @@ body {
     background-color: #ccc;
     padding: 5px;
     border:1px solid #ccc;
+}
+.red_button{
+    padding:5px;
+    border: 1px solid #555;    
+    background-color: tomato;   
+    font-size: 14px;
+    color: @sitecolor2;
+    width: 150px;
+    margin: 0px 0 0 0px; 
 }
 
 @media (max-width:767px){

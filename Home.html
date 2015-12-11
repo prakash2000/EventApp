@@ -6,7 +6,7 @@
 		<th> Event</th>
 		<th> Date</th>
 	<tr>
-	<tr ng-repeat="event in events" >						
+	<tr ng-repeat="event in events | upcommingEvents:todaysDate " >						
 		<td ng-bind="event.contactname"></td>
 		<td ng-bind="event.name"></td>
 		<td ng-bind="event.date"></td>		

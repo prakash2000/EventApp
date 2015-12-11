@@ -12,13 +12,14 @@
    </li>
    <li ng-controller="DatepickerCtrl">
       <label>Date</label>
-      <input type="text" name="event_date"  datepicker-popup="dd/MMMM/yyyy" ng-model="event.date" placeholder="Event Date" is-open="status.opened" min-date="'2015-06-01'" max-date="'2018-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" disabled required />
+      <input type="text" name="event_date"  datepicker-popup="dd/MMMM/yyyy" ng-model="event.date" placeholder="Event Date" is-open="status.opened" min-date="'2015-01-01'" max-date="'2060-12-31'" datepicker-options="dateOptions"  close-text="Close" disabled required />
+         <!-- date-disabled="disabled(date, mode)" -->
         <button type="button" class="calendar_btn" ng-click="open($event)" ><i class="glyphicon glyphicon-calendar" ></i></button>
         <span class="error_span" ng-show="NewEventForm.$submitted && NewEventForm.$dirty && NewEventForm.event_date.$error.required">* Enter Event Date</span>
-   </li>         
+   </li>            
    <li>
-         <label></label>
-         <span class="submit_msg" ng-show="showMessage" ng-bind="submitMsg"></span>
+        <label></label>
+        <span class="submit_msg" ng-show="showMessage" ng-bind="submitMsg"></span>
    </li>   
  </ul> 
  <input type="submit" value="Save" /> 

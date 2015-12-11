@@ -1,13 +1,18 @@
+<div class="button_grid">
+	<button class="red_button" type="button" onclick="DeleteAll()">Delete All Events</button>
+</div>
+
 <ul class="event_list">
 	<li ng-show="!events.length">No events</li>	
-	<li ng-repeat="event in events">
+	<li ng-repeat="event in events" class="EventBox">
+		<span class="delete_img"> <i class="glyphicon glyphicon-trash" title="Delete Event"></i></span>
 		<figure>
 			<img src="images/birthday.png" alt="Birthday Wish" />
 		</figure>
-		<div class="event_info">
+		<div class="event_info">			
 			<h2 ng-bind="event.contactname"></h2>
 			<h4 ng-bind="event.name"></h4>
 			<span ng-bind="event.date"></span>
-		</div>
+		</div>		
 	</li>
 </ul>
